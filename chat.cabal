@@ -1,0 +1,63 @@
+cabal-version: 1.12
+
+-- This file has been generated from package.yaml by hpack version 0.34.5.
+--
+-- see: https://github.com/sol/hpack
+
+name:           chat
+version:        0.1.0.0
+description:    Please see the README on GitHub at <https://github.com/meowcolm024/chat#readme>
+homepage:       https://github.com/meowcolm024/chat#readme
+bug-reports:    https://github.com/meowcolm024/chat/issues
+author:         Meowcolm024
+maintainer:     luoyicong1026@live.com
+copyright:      2022 Meowcolm024
+license:        BSD3
+license-file:   LICENSE
+build-type:     Simple
+extra-source-files:
+    README.md
+
+source-repository head
+  type: git
+  location: https://github.com/meowcolm024/chat
+
+library
+  exposed-modules:
+      Lib
+  other-modules:
+      Paths_chat
+  hs-source-dirs:
+      src
+  build-depends:
+      base >=4.7 && <5
+    , network ==3.*
+  default-language: Haskell2010
+
+executable client
+  main-is: Client.hs
+  other-modules:
+      Server
+      Paths_chat
+  hs-source-dirs:
+      app
+  ghc-options: -main-is Client -threaded -rtsopts -with-rtsopts=-N
+  build-depends:
+      base >=4.7 && <5
+    , chat
+    , network ==3.*
+  default-language: Haskell2010
+
+executable server
+  main-is: Server.hs
+  other-modules:
+      Client
+      Paths_chat
+  hs-source-dirs:
+      app
+  ghc-options: -main-is Server -threaded -rtsopts -with-rtsopts=-N
+  build-depends:
+      base >=4.7 && <5
+    , chat
+    , network ==3.*
+  default-language: Haskell2010
